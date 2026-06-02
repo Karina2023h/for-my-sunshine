@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Для Даші ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:
+radial-gradient(circle at top,#2d1b3d,#0f0f1a 70%);
+color:white;
+overflow-x:hidden;
+min-height:100vh;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,100,150,.15),transparent 30%),
+radial-gradient(circle at 80% 30%,rgba(255,180,100,.1),transparent 30%);
+pointer-events:none;
+}
+
+.container{
+max-width:420px;
+margin:auto;
+padding:30px 20px 60px;
+}
+
+.hero{
+text-align:center;
+padding-top:20px;
+}
+
+.hero h1{
+font-size:34px;
+font-weight:700;
+line-height:1.2;
+margin-bottom:10px;
+}
+
+.hero p{
+opacity:.8;
+font-size:15px;
+}
+
+.card{
+margin-top:25px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+padding:25px;
+}
+
+.btn{
+width:100%;
+border:none;
+padding:18px;
+border-radius:20px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn-love{
+background:linear-gradient(135deg,#ff4d8d,#ff758c);
+color:white;
+}
+
+.btn-love:hover{
+transform:scale(1.03);
+}
+
+.message{
+margin-top:18px;
+text-align:center;
+font-size:17px;
+line-height:1.5;
+min-height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.candle-box{
+text-align:center;
+}
+
+.candle{
+width:90px;
+height:180px;
+background:
+linear-gradient(to right,#f7f7f7,#ffffff,#ededed);
+margin:30px auto;
+border-radius:15px 15px 8px 8px;
+position:relative;
+box-shadow:0 0 25px rgba(255,255,255,.2);
+}
+
+.wick{
+position:absolute;
+top:-12px;
+left:50%;
+transform:translateX(-50%);
+width:4px;
+height:16px;
+background:black;
+}
+
+.flame{
+position:absolute;
+top:-55px;
+left:50%;
+transform:translateX(-50%);
+width:35px;
+height:55px;
+background:
+radial-gradient(circle,#fff7b2 0%,#ffd04d 40%,#ff8a00 70%);
+border-radius:50% 50% 50% 50%;
+filter:blur(.5px);
+opacity:0;
+transition:.6s;
+box-shadow:
+0 0 30px #ffcf5d,
+0 0 60px #ffae00;
+animation:flicker .8s infinite;
+}
+
+.flame.on{
+opacity:1;
+}
+
+@keyframes flicker{
+0%{transform:translateX(-50%) scale(1);}
+25%{transform:translateX(-50%) scale(.95);}
+50%{transform:translateX(-50%) scale(1.05);}
+75%{transform:translateX(-50%) scale(.97);}
+100%{transform:translateX(-50%) scale(1);}
+}
+
+.candle-text{
+text-align:center;
+font-size:16px;
+line-height:1.6;
+opacity:0;
+max-height:0;
+overflow:hidden;
+transition:.6s;
+}
+
+.candle-text.show{
+opacity:1;
+max-height:150px;
+margin-top:15px;
+}
+
+.terminal{
+background:#050505;
+border-radius:22px;
+padding:20px;
+font-family:monospace;
+font-size:14px;
+line-height:1.8;
+color:#66ff99;
+box-shadow:0 0 25px rgba(0,255,100,.15);
+}
+
+.bar{
+width:100%;
+height:18px;
+background:#1a1a1a;
+border-radius:10px;
+overflow:hidden;
+margin:10px 0;
+}
+
+.fill{
+height:100%;
+width:100%;
+background:#66ff99;
+}
+
+.hug{
+margin-top:15px;
+font-size:18px;
+text-align:center;
+color:white;
+min-height:60px;
+}
+
+.footer{
+margin-top:40px;
+text-align:center;
+opacity:.6;
+font-size:13px;
+}
+
+.hearts{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:float 6s linear forwards;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-600px);
+opacity:0;
+}
+}
+
+@media(min-width:700px){
+body{
+display:flex;
+justify-content:center;
+}
+.container{
+max-width:430px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+
+<div class="hero">
+<h1>Для Даші ❤️</h1>
+<p>Бо іноді треба просто нагадати важливе.</p>
+</div>
+
+<div class="card">
+
+<button class="btn btn-love" onclick="showReason()">
+Натисни, якщо сьогодні важкий день
+</button>
+
+<div class="message" id="reason">
+❤️
+</div>
+
+</div>
+
+<div class="card candle-box">
+
+<div class="candle">
+
+<div class="wick"></div>
+
+<div class="flame" id="flame"></div>
+
+</div>
+
+<button class="btn btn-love" onclick="lightCandle()">
+Запалити свічку для Даші
+</button>
+
+<div class="candle-text" id="candleText">
+На випадок, якщо день важкий.<br>
+Ти не одна ❤️
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="terminal">
+
+<div>$ run dasha.exe</div>
+
+<div>Loading...</div>
+
+<div>Checking mood...</div>
+
+<div>Mood detected: tired</div>
+
+<div>Applying hug...</div>
+
+<div class="bar">
+<div class="fill"></div>
+</div>
+
+<div>
+Result:<br>
+Стало трохи легше ❤️
+</div>
+
+</div>
+
+<button class="btn btn-love" style="margin-top:20px" onclick="hug()">
+Отримати ще одні обійми
+</button>
+
+<div class="hug" id="hugResult"></div>
+
+</div>
+
+<div class="footer">
+Generated with ❤️ by Karina
+</div>
+
+</div>
+
+<script>
+
+const reasons=[
+"Ти сильніша, ніж думаєш ❤️",
+"Сонечко, не забувай пити воду ❤️",
+"Я все ще пам'ятаю каву на паузі ☕",
+"Ти робиш людям легше просто собою ❤️",
+"Навіть у важкий день ти залишаєшся прекрасною ❤️",
+"Світ стає кращим, коли ти усміхаєшся ✨",
+"Тобі не потрібно бути ідеальною, щоб бути неймовірною ❤️",
+"Ти заслуговуєш на відпочинок і тепло 🤗"
+];
+
+function showReason(){
+
+const random=
+reasons[Math.floor(Math.random()*reasons.length)];
+
+document.getElementById('reason').innerHTML=random;
+
+createHearts();
+
+}
+
+function lightCandle(){
+
+document.getElementById('flame').classList.add('on');
+
+document.getElementById('candleText')
+.classList.add('show');
+
+createHearts();
+
+}
+
+const hugs=[
+"🤗 Обіймаю тебе міцно.",
+"❤️ Я поруч.",
+"🌷 Ти молодець.",
+"☀️ Завтра буде легше.",
+"🫶 Тебе дуже цінують.",
+"✨ Ти справляєшся краще, ніж думаєш.",
+"💖 Ти дуже дорога людина."
+];
+
+function hug(){
+
+const text=
+hugs[Math.floor(Math.random()*hugs.length)];
+
+document.getElementById('hugResult').innerHTML=text;
+
+createHearts();
+
+}
+
+function createHearts(){
+
+for(let i=0;i<12;i++){
+
+let heart=document.createElement('div');
+
+heart.className='heart';
+
+heart.innerHTML=Math.random()>0.5?'❤️':'✨';
+
+heart.style.left=Math.random()*100+'vw';
+
+heart.style.bottom='0';
+
+heart.style.fontSize=
+(15+Math.random()*25)+'px';
+
+document.getElementById('hearts')
+.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
