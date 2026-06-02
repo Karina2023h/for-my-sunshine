@@ -420,12 +420,18 @@ const reasons=[
 
 ];
 
+let currentReason = 0;
+
 function showReason(){
 
-const random=
-reasons[Math.floor(Math.random()*reasons.length)];
+document.getElementById('reason').innerHTML =
+reasons[currentReason];
 
-document.getElementById('reason').innerHTML=random;
+currentReason++;
+
+if(currentReason >= reasons.length){
+currentReason = 0;
+}
 
 createHearts();
 
@@ -463,12 +469,18 @@ const hugs=[
 
 ];
 
+let currentHug = 0;
+
 function hug(){
 
-const text=
-hugs[Math.floor(Math.random()*hugs.length)];
+document.getElementById('hugResult').innerHTML =
+hugs[currentHug];
 
-document.getElementById('hugResult').innerHTML=text;
+currentHug++;
+
+if(currentHug >= hugs.length){
+currentHug = 0;
+}
 
 createHearts();
 
