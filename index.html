@@ -253,6 +253,43 @@ opacity:0;
 }
 }
 
+
+  .anger-box{
+text-align:center;
+}
+
+.anger-text{
+margin-bottom:20px;
+line-height:1.6;
+opacity:.9;
+}
+
+.dummy{
+font-size:90px;
+cursor:pointer;
+user-select:none;
+display:inline-block;
+transition:.2s;
+}
+
+.dummy.hit{
+animation:punch .25s;
+}
+
+.hit-counter{
+margin-top:15px;
+font-size:18px;
+font-weight:600;
+color:#ff8fb7;
+}
+
+@keyframes punch{
+0%{transform:translateX(0);}
+25%{transform:translateX(-20px) rotate(-15deg);}
+50%{transform:translateX(20px) rotate(15deg);}
+75%{transform:translateX(-10px);}
+100%{transform:translateX(0);}
+}
 @media(min-width:700px){
 body{
 display:flex;
@@ -308,6 +345,35 @@ max-width:430px;
 <div class="flame" id="flame"></div>
 
 </div>
+
+  <div class="card anger-box">
+
+<h2 style="text-align:center;margin-bottom:15px;">
+😈 Випускатор злості 3000
+</h2>
+
+<div class="anger-text">
+Якщо тебе сьогодні дістали люди, робота або просто день не задався — тицяй 😌
+</div>
+
+<div class="dummy" id="dummy" onclick="hitDummy()">
+🧍‍♂️
+</div>
+
+<div class="hit-counter" id="hitCounter">
+Рівень бісючості: 0%
+</div>
+
+<div id="angryText" style="
+margin-top:15px;
+font-size:16px;
+color:#ffd6e7;
+min-height:45px;
+">
+Натисни на чоловічка 😈
+</div>
+
+  </div>
 
 <button class="btn btn-love" onclick="lightCandle()">
 Запали свічку 🕯️
@@ -645,6 +711,70 @@ heart.remove();
 },6000);
 
 }
+
+}
+
+  let hits = 0;
+
+const angryTexts = [
+
+"😤 Задовбала робота.",
+"🙄 Задовбали люди.",
+"☕ Хочу каву і нікого не бачити.",
+"😑 Та що ж сьогодні за день такий.",
+"🤦‍♀️ Навіщо вони це зробили.",
+"🫠 Нервова система вийшла з чату.",
+"🙃 Просто залиште мене в спокої.",
+"😮‍💨 Видихнули...",
+"😤 Все. Я офіційно злюка.",
+"💅 Випускаємо негатив красиво.",
+"⚡ Нерви сказали до побачення.",
+"🍕 Можливо проблема в тому, що я хочу піцу.",
+"😴 А може просто треба поспати.",
+"🫶 Зараз стане легше.",
+"🌷 Ти все одно молодчинка."
+];
+
+function hitDummy(){
+
+const dummy = document.getElementById('dummy');
+
+hits++;
+
+let percent = Math.min(hits * 5, 100);
+
+document.getElementById('hitCounter').innerHTML =
+'Рівень бісючості: ' + percent + '%';
+
+document.getElementById('angryText').innerHTML =
+angryTexts[Math.floor(Math.random()*angryTexts.length)];
+
+dummy.classList.add('hit');
+
+if(hits < 10){
+dummy.innerHTML = '🧍‍♂️';
+}
+else if(hits < 20){
+dummy.innerHTML = '😵‍💫';
+}
+else if(hits < 30){
+dummy.innerHTML = '🥴';
+}
+else if(hits < 40){
+dummy.innerHTML = '🤯';
+}
+else{
+dummy.innerHTML = '👻';
+
+document.getElementById('angryText').innerHTML =
+'🎉 Злість успішно вигнана. Час на обіймашки ❤️';
+}
+
+setTimeout(()=>{
+dummy.classList.remove('hit');
+},250);
+
+createHearts();
 
 }
 
